@@ -21,6 +21,14 @@ int ReCount(int n){
     }
     return count;
 }
+
+bool InRealm(int n,int a,int b){
+    if(n>=a&&n<=b){
+        return true;
+    }
+    return false;
+}
+
 int main(){
     int a,b;
     cin >> a >> b;
@@ -28,27 +36,36 @@ int main(){
     for(int i= ReCount(a);i<=ReCount(b);i++){
         if(i==1){
             for(int j=a;j<10;j++){
-                if(is_prime(j)){
+                if(is_prime(j)&&InRealm(j,a,b)){
                     cout << j << endl;
                 }
             }
         }
         if(i==3){
-            for(int dl1=1;dl1<=9;dl1++){
+            for(int dl1=1;dl1<=9;dl1+=2){
                 for(int dl2=0;dl2<=9;dl2++){
                      palindrome_prime=+100*dl1+10*dl2+dl1;
-                     if(is_prime(palindrome_prime)){
+                     if(is_prime(palindrome_prime)&&InRealm(palindrome_prime,a,b)){
                          cout << palindrome_prime << endl;
                      }
                 }
             }
         }
+
+        if(i==2){
+            for(int dl1=1;dl1<=9;dl1+=2){
+                palindrome_prime=10*dl1+dl1;
+                if(is_prime(palindrome_prime)&&InRealm(palindrome_prime,a,b)){
+                    cout << palindrome_prime << endl;
+                }
+            }
+        }
         if(i==5){
-            for(int dl1=1;dl1<=9;dl1++){
+            for(int dl1=1;dl1<=9;dl1+=2){
                 for(int dl2=0;dl2<=9;dl2++){
                     for(int dl3=0;dl3<=9;dl3++){
                         palindrome_prime=10000*dl1+1000*dl2+100*dl3+10*dl2+dl1;
-                        if(is_prime(palindrome_prime)){
+                        if(is_prime(palindrome_prime)&&InRealm(palindrome_prime,a,b)){
                             cout << palindrome_prime << endl;
                         }
                     }
@@ -56,12 +73,12 @@ int main(){
             }
         }
         if(i==7){
-            for(int dl1=1;dl1<=9;dl1++){
+            for(int dl1=1;dl1<=9;dl1+=2){
                 for(int dl2=0;dl2<=9;dl2++){
-                    for(int dl3=0;dl3<9;dl3++){
+                    for(int dl3=0;dl3<=9;dl3++){
                         for(int dl4=0;dl4<=9;dl4++){
                             palindrome_prime=1000000*dl1+100000*dl2+10000*dl3+1000*dl4+100*dl3+10*dl2+dl1;
-                            if(is_prime(palindrome_prime)){
+                            if(is_prime(palindrome_prime)&&InRealm(palindrome_prime,a,b)){
                                 cout << palindrome_prime << endl;
                             }
                         }
@@ -70,13 +87,13 @@ int main(){
             }
         }
         if(i==9){
-            for(int dl1=1;dl1<=9;dl1++){
+            for(int dl1=1;dl1<=9;dl1+=2){
                 for(int dl2=0;dl2<=9;dl2++){
                     for(int dl3=0;dl3<=9;dl3++){
                         for(int dl4=0;dl4<=9;dl4++){
                             for(int dl5=0;dl5<=9;dl5++){
                                 palindrome_prime=100000000*dl1+10000000*dl2+1000000*dl3+100000*dl4+10000*dl5+1000*dl4+100*dl3+10*dl2+dl1;
-                                if(is_prime(palindrome_prime)){
+                                if(is_prime(palindrome_prime)&&InRealm(palindrome_prime,a,b)){
                                     cout << palindrome_prime << endl;
                                 }
                             }

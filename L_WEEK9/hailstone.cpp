@@ -1,40 +1,28 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
-
-bool is_even(int x) {
-    if (x % 2 == 0) {
-        return true;
-    } else {
-        return false;
-    }
-}
 
 int main() {
     int n;
     cin >> n;
-    int i = 1;
-    cout << i;
-    while (1) {
-        i = i * 2;
-        cout << " " << i;
-        if (i == n) {
-            cout << " " << i;
-            break;
+    vector<int> answer;//定义一个vector数组
+    answer.push_back(n);
+    while (n != 1) {
+        if (n % 2 == 0) {
+            n = n / 2;
+            answer.push_back(n);//将n的值加入到vector数组中
         } else {
-            if (is_even(i) && ((i - 1) % 3 == 0)) {
-                i = (i - 1) / 3;
-                cout << " " << i;
-            } else {
-                i = i * 2;
-                cout << " " << i;
-            }
+            n = 3 * n + 1;
+            answer.push_back(n);
         }
     }
-    cout << endl;
+    int len= answer.size();
+    for(int i=len-1;i>=0;i--){
+        cout << answer[i] << " ";
+    }
     return 0;
 }
-
 //
 // Created by 86138 on 2024/4/28.
 //
